@@ -3,6 +3,80 @@ title: "Applied Probability"
 output: html_document
 ---
 
-## Introduction
+# Overview  of Elementary Probability
 
-This is a test page for my probability experiments.
+## Sample space, outcomes and events
+
+Definition 2.1
+A collection of all elementary results, or **outcomes** of an experiment, is called a **sample space**.
+
+Definition 2.2
+Any set of outcomes is an **event**. Thus, events are subsets of the sample space.
+
+Common Notation:
+$\Omega$ or $S$ for the sample space
+$\emptyset$ for the empty set/event.
+Note: $\emptyset \subset \Omega$ for any $\Omega$
+$A,B,E$ and other capital letters for events
+Note: $E \subset \Omega$
+$\omega$ or $s$ for individual outcomes
+Note: $\omega \in \Omega$ is an outcome; $\{\omega\} \subset \Omega$ is an event
+$\mathbb{P}[E] = \mathbf{P}[E]$ for the probability of an event
+
+Example 2.4
+A tossed die can produce one of 6 possible outcomes: 1 dot, through 6 dots. Each outcome is an event. There are other events: observing an even number of dots, an odd number of dots, a number of dots less than 3, etc.
+$\Omega = \{1,2,3,4,5,6\}$
+$A=1, B=2, \dots, F=6$
+$O=\{1,3,5\}, E=\{2,4,6\}$
+$L=\{1,2\}$
+
+Complement
+```{r}
+library(VennDiagram)
+
+range <- paste("10",1:10,sep="")
+x <- list(
+  A = sample(range,5),
+  B = sample(range,5)
+)
+
+
+venn.diagram(x, filename = "venn-2-dimensions.png")
+
+# Helper function to display Venn diagram
+display_venn <- function(x, ...){
+  library(VennDiagram)
+  grid.newpage()
+  venn_object <- venn.diagram(x, filename = NULL, category.names = c("A","B"))
+  grid.draw(venn_object)
+}
+
+# Three dimension Venn plot
+display_venn(x[1:2])
+```
+
+
+$\Rightarrow$ $A \setminus B = A \cap \bar{B}$ defines the set difference
+$\Rightarrow$ De Morgan's laws establish the relation between union, intersection and complementation:
+$$
+\overline{E_1 \cup \dots \cup E_n} = \bar{E_n} \cap \dots \cap \bar{E_n}; \quad \overline{E_1 \cap \dots \cap E_n} = \bar{E_n} \cup \dots \cup \bar{E_n}
+$$
+Defnition 2.7
+Events A and B are **disjoint** if their intersection is empty,
+$$A \cap B = \emptyset.$$
+Events $A_1,A_2,A_3,\dots$ are **mutually exclusive** or **pairwise disjoint** if any two of these events are disjoint, i.e.,
+$$A_i \cap A_j = \emptyset \text{ for any } i \neq j.$$
+
+Definition 2.8
+Events $A,B,C,\dots$ are **exhaustive** if their union equals the whole sample space, i.e.,
+$$A \cup B \cup C \cup \dots = \Omega.$$
+
+A collection of mutually exclusive, exhaustive events is called a partition of the sample space.
+
+Any event $A \subset \Omega$ can be written as the union of its intersections with the elements of a partition:
+$$A = (A \cup B_1) \cup (A \cup B_2) \cup (A \cup B_3)$$
+
+
+
+
+

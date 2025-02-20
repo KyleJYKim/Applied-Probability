@@ -1,0 +1,7 @@
+INFO [2025-02-20 19:02:07] [[1]]
+INFO [2025-02-20 19:02:07] c(10, 10)
+INFO [2025-02-20 19:02:07] 
+INFO [2025-02-20 19:02:07] $filename
+INFO [2025-02-20 19:02:07] [1] "venn-2-dimensions.png"
+INFO [2025-02-20 19:02:07] 
+ERROR [2025-02-20 19:02:07] Unexpected parameter length for "category"
